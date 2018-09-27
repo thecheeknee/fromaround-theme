@@ -11,16 +11,18 @@
                 </div>
                     <div class="row no-margin header-nav">
                         <div class="col l12 right-align hide-on-med-and-down">
-                            <a href="" class="menu-item center-align uppercase">Subscribe</a>
+                            <a href="#subscribeModal" class="menu-item center-align uppercase modal-trigger">Subscribe</a>
                         </div>
                         <div class="line clearfix grey lighter-2 hide-on-med-and-down"></div>
                         <div class="col l12 right-align hide-on-med-and-down">
-                            <a href="<?php echo get_site_url() . '/category/textiles'; ?>" class="menu-item center-align uppercase">Textiles</a>
-                            <a href="<?php echo get_site_url() . '/category/tableware'; ?>" class="menu-item center-align uppercase">Tableware</a>
-                            <a href="<?php echo get_site_url() . '/category/furniture'; ?>" class="menu-item center-align uppercase">Furniture</a>
-                            <a href="<?php echo get_site_url() . '/category/objects'; ?>" class="menu-item center-align uppercase">Objects</a>
-                            <a href="<?php echo get_site_url() . '/category/travel'; ?>" class="menu-item center-align uppercase">Travel</a>
-                            <a href="<?php echo get_site_url() . '/category/journal'; ?>" class="menu-item center-align uppercase">Journal</a>
+						<?php $menu_name = 'primary';
+							$locations = get_nav_menu_locations();
+							$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+							$menuitems = wp_get_nav_menu_items( $menu->term_id );
+							foreach( $menuitems as $menu_item ) {
+								echo '<a href="' . $menu_item->url . '" class="menu-item center-align uppercase">' . $menu_item->title . '</a>';
+							}
+						?>
                         </div>
                     </div>
                 </div>

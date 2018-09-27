@@ -85,3 +85,12 @@
         </a>
     </div>
 </div>
+<div id="subscribeModal" class="modal">
+	<div class="modal-content">
+		<h3 class="center-align">Subscribe to our updates</h3>
+		<div class="clearfix">&nbsp;</div>
+		<div class="full-width">
+			<?php echo do_shortcode( '[mc4wp_form id="99"]' ); ?>
+		</div>
+	</div>
+</div>

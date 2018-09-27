@@ -12,7 +12,7 @@
                 );
                 $categories = get_categories($args);
                 foreach ( $categories as $category ) {
-                    if( $category->slug == 'featured' ){continue;}
+                    if( $category->slug == 'featured' || $category->slug == 'uncategorized' ){continue;}
             ?>
             <div class="col s12 m6 l4 mgblock margin-top margin-below">
                 <article>

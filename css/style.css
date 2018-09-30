@@ -1,5 +1,5 @@
 /*Common CSS*/
-html{font-size:13px;}
+html{font-size:12px;}
 body *{-webkit-transition:all 0.2s ease-in-out; -moz-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out; 
 }
 .no-margin{margin-top:0; margin-bottom:0;}
@@ -56,7 +56,7 @@ li{font-family: 'Open Sans', sans-serif;}
 h1,h2,h3{font-size:30px;}
 h4,h5,h6,.btn-large{font-size:20px;}
 p,span,button,input,
-.btn, .btn-small, .btn-floating, .btn-flat{font-size:13px;}
+.btn, .btn-small, .btn-floating, .btn-flat{font-size:12px;}
 
 
 /*image CSS*/
@@ -203,6 +203,7 @@ header.page-wrapper.full-width.rel-div.div-center.scrollblock{padding-left:0.5re
 .card .card-title{font-size: 20px;}
 .card .card-image img{filter: grayscale(10%) brightness(70%); transition: all 0.8s ease-in-out; -webkit-transition: all 0.8s ease-in-out; -moz-transition: all 0.8s ease-in-out;}
 .card.activated .card-hover{display:none;}
+.card-activated .card-image .card-title{opacity: 0!important;}
 .card.activated:hover .card-hover{opacity: 0;}
 .card.activated:hover .card-image img{opacity:1; filter: grayscale(0%);}
 .card-reveal{opacity: 0.8;}
@@ -256,8 +257,8 @@ header.page-wrapper.full-width.rel-div.div-center.scrollblock{padding-left:0.5re
 .caption-wrapper{margin-top:20px;}
 .slide-controls{width:55px; margin-top:20px;}
 .slider .slides li{overflow: unset;}
-.slider .slides li .caption{bottom:-50px; top:unset; color:#000000; font-size: 13px;}
-.content *{font-size:15px;}
+.slider .slides li .caption{bottom:-50px; top:unset; color:#000000; font-size: 12px;}
+.content *{font-size:12px;}
 .start-quote, 
 .end-quote{font-size:4em; display: block; position: relative; width:100%; line-height: 1em; height:1em; font-family:serif;}
 .start-quote:before{position: absolute; width: 100%; display:block; content:"\201C";}
@@ -266,7 +267,7 @@ header.page-wrapper.full-width.rel-div.div-center.scrollblock{padding-left:0.5re
 #referencesBlock *{text-align: justify;}
 #referencesBlock ul.references{padding-left:10px; list-style-type: disc;}
 #referencesBlock ul.references li{margin-bottom: 10px;}
-#textbyBlock *{font-size:13px; font-weight:700;}
+#textbyBlock *{font-size:12px; font-weight:700;}
 @media screen and (min-width:1200px){
 	.nav-content{width:220px;}
 }

@@ -43,7 +43,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col l3 s12">
+            <div class="col l2 s12">
                 <h6 class="uppercase black-text">Latest Posts</h6>
                 <ul class="posts-list">
                     <?php
@@ -65,7 +65,16 @@
                     ?>
                 </ul>
             </div>
-            <div class="col l3 s12">
+			<div class="col l2 s12">
+				<h6 class="uppercase black-text">Quick links</h6>
+				<ul class="posts-list">
+                    <li><a class="black-text tiny" href="#">Contact Us</a></li>
+                    <li><a class="black-text tiny modal-trigger" href="#subscribeModal">Subscribe</a></li>
+                    <li><a class="black-text tiny" href="https://fromaround.com/credits-licenses/">Licenses</a></li>
+					<li><a class="black-text tiny" href="https://fromaround.com/privacy-policy/">Privacy Policy</a></li>
+                </ul>
+			</div>
+            <div class="col l2 s12">
                 <form class="col s12 hide-on-small-only searchform" action="<?php echo get_site_url(); ?>" method="get" role="search">
                     <div class="input-field row black-text">
                         <i class="material-icons prefix">search</i>
@@ -73,20 +82,7 @@
                         <label for="search">Search</label>
                     </div>
                 </form>
-                <ul class="footer-icon-list">
-                    <li><a class="black-text" href="#">
-                        <i class="material-icons">call</i>
-                        <span class="text-block footer-link">Contact Us</span>
-                    </a></li>
-                    <li><a class="black-text" href="#">
-                        <i class="material-icons">subscriptions</i>
-                        <span class="text-block footer-link">Subscribe</span>
-                    </a></li>
-                    <li><a class="black-text" href="#">
-                        <i class="material-icons">info</i>
-                        <span class="text-block footer-link">Licenses</span>
-                    </a></li>
-                </ul>
+                
             </div>
         </div>
     </div>

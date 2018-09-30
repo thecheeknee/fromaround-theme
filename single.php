@@ -141,6 +141,12 @@ get_template_part( 'header-nav' ); ?>
                                 <div class="center-align end-quote div-center clearfix"></div>
                             </div>
                         </div>
+						<div class="spacer"></div>
+                        <div class="scrollblock">
+                            <div class="mgblock container div-center">
+                                <p>To find out more about the work we do, the artisans we collaborate with and the crafts and cultures we explore,<br>please email Warren Menezes at <a href="mailto:partners@fromaround.co.uk">partners@fromaround.co.uk</a> </p>
+                            </div>
+                        </div>
                         <div class="spacer"></div>
                         <div class="scrollblock">
                             <div class="center mgblock page-wrapper div-center">
@@ -167,12 +173,7 @@ get_template_part( 'header-nav' ); ?>
                             </div>
                         </div>
                         <?php } ?>
-                        <div class="spacer"></div>
-                        <div class="scrollblock">
-                            <div class="mgblock container div-center">
-                                <p>To find out more about the work we do, the artisans we collaborate with and the crafts and cultures we explore,<br>please email Warren Menezes at <a href="mailto:partners@fromaround.co.uk">partners@fromaround.co.uk</a> </p>
-                            </div>
-                        </div>
+                        
                         
                     </div>
                 </div>

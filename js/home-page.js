@@ -124,8 +124,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	var sideNav = document.querySelectorAll('.sidenav');
 	M.Sidenav.init(sideNav);
 
+	var modalBloc = document.querySelectorAll('.modal');
+	M.Modal.init(modalBloc, {startingTop:'30%',endingTop:'40%'});
+
 	var figs = document.querySelectorAll('.materialboxed');
-	var instances = M.Materialbox.init(figs);
+	M.Materialbox.init(figs);
 
 	var carousel1 = document.querySelector('#herosliderwrapper');
 	var carouselOptions1 = {

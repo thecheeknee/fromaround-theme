@@ -23,10 +23,14 @@
                         ?>
                         <div class="clearfix">&nbsp;</div>
                         <ul id="social-media" class="full-width">
-                            <li><a href="https://www.facebook.com/frmarnd/"><img src="<?php echo get_template_directory_uri(); ?>/img/facebook.png"></a></li>
-                            <li><a href="https://www.instagram.com/frmarnd/"><img src="<?php echo get_template_directory_uri(); ?>/img/instagram.png"></a></li>
-                            <li><a href="https://www.youtube.com/channel/UCZ34-dvBnr90U9Bu-tdroCg?view_as=subscriber"><img src="<?php echo get_template_directory_uri(); ?>/img/youtube.png"></a></li>
-                            <!-- <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/gmail.png"></a></li> -->
+                        <?php $menu_name = 'followus';
+                            $locations = get_nav_menu_locations();
+                            $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+                            $menuitems = wp_get_nav_menu_items( $menu->term_id );
+                            foreach( $menuitems as $menu_item ) {
+                                echo '<li><a title="subcribe to our ' . $menu_item->title . ' updates" href="' . $menu_item->url . '" class="z-depth-0 modal-trigger" target="_blank"><img src="' . get_template_directory_uri() .'/img/' . $menu_item->title . '.png"></a></li>';
+                            }
+                        ?>
                         </ul>
                     </div>
                 </div>
@@ -58,8 +62,11 @@
 
                     $recent_posts = wp_get_recent_posts( $args, ARRAY_A );
                     foreach( $recent_posts as $recent ){
+                        if( strlen($recent["post_title"])>24 ){
+                            $recent["post_title"] = substr($recent["post_title"],0,23) . '...';
+                        }
                     ?>
-                        <li><a class="grey-text text-darken-3 tiny" href="<?php echo get_permalink($recent["ID"]); ?>"><?php echo $recent["post_title"]; ?></a></li>
+                        <li><a class="black-text tiny" href="<?php echo get_permalink($recent["ID"]); ?>"><?php echo $recent["post_title"]; ?></a></li>
                     <?php
                     }
                     ?>
@@ -68,21 +75,29 @@
 			<div class="col l2 s12">
 				<h6 class="uppercase black-text">Quick links</h6>
 				<ul class="posts-list">
-                    <li><a class="black-text tiny" href="#">Contact Us</a></li>
-                    <li><a class="black-text tiny modal-trigger" href="#subscribeModal">Subscribe</a></li>
-                    <li><a class="black-text tiny" href="https://fromaround.com/credits-licenses/">Licenses</a></li>
-					<li><a class="black-text tiny" href="https://fromaround.com/privacy-policy/">Privacy Policy</a></li>
+                    <?php $menu_name = 'secondary';
+                    $locations = get_nav_menu_locations();
+                    $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+                    $menuitems = wp_get_nav_menu_items( $menu->term_id );
+                    foreach( $menuitems as $menu_item ) {
+                        echo '<li><a class="black-text tiny" href="' . $menu_item->url . '">' . $menu_item->title . '</a></li>';
+                    }
+                    ?>
                 </ul>
 			</div>
             <div class="col l2 s12">
                 <form class="col s12 hide-on-small-only searchform" action="<?php echo get_site_url(); ?>" method="get" role="search">
                     <div class="input-field row black-text">
-                        <i class="material-icons prefix">search</i>
+						<i class="material-icons prefix">search</i>
                         <input name="s" id="search" type="text" class="validate black-text" value="<?php the_search_query(); ?>">
                         <label for="search">Search</label>
                     </div>
                 </form>
-                
+				<div class="clearfix"></div>
+				<ul class="posts-list">
+                    <li><a class="black-text tiny" href="<?php echo get_site_url(); ?>/contact-us/">Contact Us</a></li>
+                    <li><a class="black-text tiny modal-trigger" href="#subscribeModal">Subscribe</a></li>
+				</ul>
             </div>
         </div>
     </div>

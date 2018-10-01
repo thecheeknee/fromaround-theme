@@ -11,7 +11,7 @@
                 </div>
                     <div class="row no-margin header-nav">
                         <div class="col l12 right-align hide-on-med-and-down">
-                            <a href="#subscribeModal" class="menu-item center-align uppercase modal-trigger">Subscribe</a>
+                            <a href="#subscribeModal" class="menu-item center-align uppercase modal-trigger">Subscribe <i class="material-icons" style="vertical-align: middle; font-size: 17px;">mail_outline</i></a>
                         </div>
                         <div class="line clearfix grey lighter-2 hide-on-med-and-down"></div>
                         <div class="col l12 right-align hide-on-med-and-down">

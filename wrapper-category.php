@@ -28,7 +28,11 @@
                             <?php
                                 $the_query = new WP_Query( array ( 'category_name' => $category->slug, 'orderby' => 'rand', 'posts_per_page' => '1' ) );
                                 while ( $the_query->have_posts() ) : $the_query->the_post();
-                                    $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'square');?>
+                                    $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'square');
+                                    if($featured_img_url==''){
+                                        $featured_img_url = get_template_directory_uri() . '/img/cat/' . $category->slug . '-default-featured-img.jpg';
+                                    } 
+                            ?>
                                     <a href="<?php echo get_site_url() . '/category/' . $category->slug; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/transparent.png" class="activator category-img" style="background-image:url(<?php echo $featured_img_url; ?>);" /></a>
                             <?php
                                 endwhile;

@@ -8,7 +8,8 @@
  */
  
 get_header();
-get_template_part( 'header-nav' ); ?>
+get_template_part( 'header-nav' );
+?>
 <?php if( is_category() ){
     $featured_image = '';
     $cat_terms = get_term( get_query_var('cat'), 'category' ); 
@@ -19,6 +20,9 @@ get_template_part( 'header-nav' ); ?>
     <?php
     endwhile;
     wp_reset_postdata();
+    if($featured_image==''){
+        $featured_image = get_template_directory_uri() . '/img/cat/' . $cat_terms->slug . '-default-featured-img.jpg';
+    }
 ?>
 <section>
     <img src="<?php echo $featured_image; ?>" class="hide-on-load" id="loaderImg">
@@ -35,14 +39,11 @@ get_template_part( 'header-nav' ); ?>
         </div>
     </div>
 </section>
-<div class="spacer"></div>
 <section class="page-wrapper full-width rel-div div-center full-height">
     <div class="scrollblock">
         <header>
             <div class="center-align container intro-block mgblock margin-top black-text">
-                <span class="special"></span>
                 <?php echo category_description(); ?>
-                <span class="special"></span>
             </div>
         </header>
         <div class="spacer"></div>
@@ -51,17 +52,19 @@ get_template_part( 'header-nav' ); ?>
         <?php 
             global $query_string;
             query_posts($query_string . '&posts_type=post&paged=1');
-            if (have_posts()) : while ( have_posts() ) : the_post(); ?>
+            if (have_posts()) : while ( have_posts() ) : the_post(); 
+            $title_text = (strlen( esc_html(get_the_title()) )>25)?substr(esc_html(get_the_title()),0,25) . '...':(esc_html( get_the_title() ));
+        ?>
         <div class="col s12 m6 l4 mgblock margin-top margin-below">
             <article>
                 <div class="card black full-width">
                     <div class="card-hover hide-on-med-and-down">
-                        <span class="white-text full-width left-align"><?php the_title(); ?></span>
+                        <span class="white-text full-width left-align"><?php echo $title_text; ?></span>
                         <div class="cleared"></div><a class="activator">Preview <i class="material-icons">expand_less</i></a><div class="cleared"></div>
                     </div>
                     <div class="card-image waves-effect waves-block waves-light">
                         <a href="<?php the_permalink(); ?>"><img class="full-width" src="<?php echo get_template_directory_uri(); ?>/img/transparent.png" style="background-image:url(<?php echo get_the_post_thumbnail_url(get_the_ID(),'full'); ?>"></a>
-                        <span class="card-title"><?php the_title(); ?></span>
+                        <span class="card-title"><?php echo $title_text; ?></span>
                     </div>
                     <div class="card-content white hide-on-med-and-up">
                         <p><a class="btn-flat border activator">Preview Post</a></p>

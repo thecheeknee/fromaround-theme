@@ -30,7 +30,8 @@ function theme_setup() {
     register_nav_menus( array(
         'primary'   => __( 'Primary Menu', 'fromaround' ),
         'secondary' => __('Secondary Menu', 'fromaround' ),
-        'followus' => __('Custom Menu', 'fromaround' )
+        'subscribe' => __('Subscribe Menu', 'fromaround' ),
+        'followus' => __('Follow Menu', 'fromaround' )
     ) );
 
     /**
@@ -60,6 +61,16 @@ function jetpackme_remove_rp() {
     }
 }
 add_filter( 'wp', 'jetpackme_remove_rp', 20 );
+
+function jptweak_remove_share() {
+    remove_filter( 'the_content', 'sharing_display', 19 );
+    remove_filter( 'the_excerpt', 'sharing_display', 19 );
+    if ( class_exists( 'Jetpack_Likes' ) ) {
+        remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+    }
+}
+ 
+add_action( 'loop_start', 'jptweak_remove_share' );
 
 // tag and category hooks
 add_action('init', 'tags_categories_support_all');

@@ -10,7 +10,7 @@
     <div class="full-width screen-height valign-wrapper">
         <?php
             $args = array(
-                'name' => 'about-fromaround',
+                'name' => 'about',
                 'post_type' => 'page'
             );
             $about_page = get_posts( $args );

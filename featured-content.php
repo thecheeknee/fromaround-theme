@@ -20,13 +20,14 @@ if ( $query->have_posts() ) {
                     while ( $query->have_posts() ) {
                         $query->the_post();
                         $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
+                        $title_text = strlen(esc_html( get_the_title() )>25)?substr(esc_html( get_the_title() ),0,25 . '...'):esc_html( get_the_title() );
             ?>
             <div class="carousel-item black" href="#<?php echo $featured_counter; ?>!" data-counter="<?php echo $featured_counter; ?>">
                 <div class="valign-wrapper full-width carousel-height">
                     <div class="text-content caption center-align white-text">
-                        <h2 class="white-text uppercase wide thicker"><?php the_title(); ?></h2>
+                        <h2 class="white-text uppercase wide thicker"><?php echo $title_text; ?></h2>
                         <div class="divider grey"><div class="track white"></div></div>
-                        <a href="<?php the_permalink(); ?>" class="btn-flat spacing text-block white-text uppercase">read more</a>
+                        <a href="<?php the_permalink(); ?>" class="btn-flat spacing full-width text-block white-text uppercase">read more</a>
                     </div>
                 </div>
                 <img src="<?php echo get_template_directory_uri(); ?>/img/transparent.png" class="full-width carousel-height" style="background-image:url(<?php echo $featured_img_url; ?>);">

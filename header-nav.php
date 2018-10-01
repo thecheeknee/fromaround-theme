@@ -2,7 +2,7 @@
 <div class="full-width white hide-on-med-and-down">
     <header>
         <div class="navbar-fixed" id="page-navigation">
-            <nav class="white">
+            <nav class="white z-depth-0 border-black">
                 <div class="nav-wrapper white">
                     <a href="<?php echo get_site_url(); ?>" class="brand-logo left"><img class="responsive" src="<?php echo get_template_directory_uri(); ?>/img/logo-small.png"></a>
                     <div class="page-wrapper div-center full-width rel-div">
@@ -57,14 +57,13 @@
 <div class="fix-div hide-on-med-and-down hidden" id="social-links">
     <div>
         <ul>
-            <li><span class="btn black z-depth-0">Follow Us</span></li>
-			<?php $menu_name = 'followus';
+			<?php $menu_name = 'subscribe';
 				$locations = get_nav_menu_locations();
 				$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
 				$menuitems = wp_get_nav_menu_items( $menu->term_id );
 				foreach( $menuitems as $menu_item ) {
 					echo '<li>';
-					echo '<a class="btn z-depth-0" href="' . $menu_item->url . '">' . $menu_item->title . '</a>';
+					echo '<a class="z-depth-0 modal-trigger" target="_blank" href="' . $menu_item->url . '"><img class="responsive" src="' . get_template_directory_uri() .'/img/' . $menu_item->title . '.png"></a>';
 					echo '</li>';
 				}
 			?>

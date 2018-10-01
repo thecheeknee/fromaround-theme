@@ -23,8 +23,6 @@
                 <div class="logo-wrapper div-center">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/logo-small.png" class="responsive">
                 </div>
-                <h1 class="hide-on-med-and-down sentence">Leading to shift the way in which artisanal products are perceived.</h1>
-                <p class="show-on-medium-and-down hide-on-large-only">Handmade goods for a global impact.</p>
             </div>
         </div>
         <!--?php if(!is_front_page() && !is_singular() && !is_single()){ ?>

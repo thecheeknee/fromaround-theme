@@ -1,8 +1,8 @@
 <?php
 /**
- * Template Name: Default
+ * Template Name: legal
  * Template Post Type: page
- * 
+ *
  * @package WordPress
  * @subpackage Fromaround
  * @since Fromaround 1.0
@@ -28,7 +28,6 @@ get_template_part( 'header-nav' ); ?>
             $post_image = get_the_post_thumbnail_url(get_the_ID(),'full');
 ?>
 <article>
-    <!--img src="<?php echo $post_image; ?>" class="hide-on-load" id="loaderImg"-->
     <div class="clearfix">&nbsp;</div>
     <div class="article-wrapper">
         <div class="post-content margin-top center-align grey-text text-darken-4">
@@ -37,71 +36,10 @@ get_template_part( 'header-nav' ); ?>
                     <h1 class="center thicker"><?php the_title(); ?></h1>
 					<div id="textbyBlock">
                     </div>
-					<p class="black-text sentence center-align"><?php echo $category->slug; ?> | <i class="material-icons">access_time</i> <?php echo get_the_date( 'M j Y' ); ?></p>
-                    <div class="container intropost-block div-center">
-						<div class="justify-align" id="introsection"></div>
-					</div>
+					<p class="black-text sentence center-align"><i class="material-icons">access_time</i> <?php echo get_the_date( 'M j, Y' ); ?></p>
                 </div>
             </div>
             <div class="page-wrapper full-width rel-div div-center">
-                <?php $attachments = get_attached_media( 'image' );
-                if($attachments){ ?>
-                <div class="row">
-                    <div class="col l8 s12 shift-left">
-                        <h2 class="uppercase special thicker left-align no-margin"><?php the_subtitle(); ?></h2>
-                        <div class="clearfix">&nbsp;</div>
-                        <div class="slider black" id="content_slider">
-                            <ul class="slides">
-                                <?php
-                                    $counter = 0;
-                                    foreach($attachments as $attachment) {
-                                        if(strtolower($attachment->post_excerpt)=='artist' || strtolower($attachment->post_content)=='inline'){
-                                            continue;
-                                        }
-                                        $counter++;
-                                        echo '<li><img src="' .$attachment->guid . '" class="full-width" data-id="slide_' .$counter. '" '
-                                            . 'title="' . $attachment->post_content . '">';
-                                        echo '<div class="caption center-align" data-id="slide_'. $ctr .'">';
-                                        echo '<p class="no-margin thicker black-text">' . $attachment->post_title . '</p>';
-                                        echo '<p class="no-margin black-text">' . $attachment->post_content . '</p>';
-                                        echo '</div>';
-                                        echo '</li>';
-                                    }
-                                ?>
-                            </ul>
-                        </div>
-                        <div class="slider-control full-width rel-div">
-                            <div class="row">
-                                <div class="col s6 left-align">
-                                    <a class="black-text btn-large white z-depth-0" id="slidePrev"><i class="material-icons">chevron_left</i></a>
-                                </div>
-                                <div class="col s6 right-align">
-                                    <a class="black-text btn-large white z-depth-0" id="slideNext"><i class="material-icons">chevron_right</i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l4 s12 left-align shift-right">
-                        <div class="full-width">
-                        <?php
-                            foreach($attachments as $attachment) {
-                                if(strtolower($attachment->post_excerpt)=='artist'){
-                                    echo '<figure class="no-margin">
-                                            <img src="' .$attachment->guid. '" title="About Us" alt="' .get_post_meta($attachment->ID , '_wp_attachment_image_alt', true). '" class="full-width">
-                                        </figure>';
-                                    echo '<p class="uppercase thicker left-align">About Us</p>';
-                                    echo '<p class="left-align">' .$attachment->post_title. '</p>';
-                                    echo '<p class="left-align">' .$attachment->post_content. '</p>';
-                                } else {
-                                    continue;
-                                }
-                            }
-                        ?>
-                        </div>
-                        <div class="spacer"></div>
-                    </div>
-                </div>
-                <?php } ?>
                 <div class="row">
                     <div class="col s12">
                         <div class="scrollblock">
@@ -111,13 +49,6 @@ get_template_part( 'header-nav' ); ?>
 										<?php the_content(); ?>
 									</div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="scrollblock">
-                            <div class="center mgblock page-wrapper div-center" id="blockWrapper">
-                                <div class="center-align start-quote div-center clearfix"></div>
-                                <div class="content container intro-block div-center"></div>
-                                <div class="center-align end-quote div-center clearfix"></div>
                             </div>
                         </div>
                         <div class="scrollblock">

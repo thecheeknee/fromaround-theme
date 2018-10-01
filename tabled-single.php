@@ -1,6 +1,7 @@
 <?php
 /**
- * The template for displaying all single posts and attachments
+ * Template Name: special article
+ * Template Post Type: post
  *
  * @package WordPress
  * @subpackage Fromaround
@@ -44,24 +45,25 @@ get_template_part( 'header-nav' ); ?>
             </div>
         </nav>
     </div>
-    <!--img src="<?php echo $post_image; ?>" class="hide-on-load" id="loaderImg"-->
+    <img src="<?php echo $post_image; ?>" class="hide-on-load" id="loaderImg">
     <div class="clearfix">&nbsp;</div>
     <div class="article-wrapper">
         <div class="post-content margin-top center-align grey-text text-darken-4">
             <div class="scrollblock text-wrapper">
                 <div class="center mgblock page-wrapper div-center">
-                    <h1 class="center thicker"><?php the_title(); ?></h1>
-					<div id="textbyBlock">
+                    <div class="row full-width">
+                        <div class="col s12 m4">
+                            <h1 class="thicker no-margin left-align"><?php the_title(); ?></h1>
+                            <div id="textbyBlock" class="left-align"></div>
+                            <p class="black-text uppercase left-align"><i class="material-icons">access_time</i> <?php echo get_the_date( 'M j Y' ); ?></p>
+                        </div>
+                        <div class="col s12 m8">
+                            <div class="justify-align" id="introsection"></div>
+                        </div>
                     </div>
-					<p class="black-text sentence center-align"><?php echo $category->slug; ?> | <i class="material-icons">access_time</i> <?php echo get_the_date( 'M j Y' ); ?></p>
-                    <div class="container intropost-block div-center">
-						<div class="justify-align" id="introsection"></div>
-					</div>
                 </div>
             </div>
             <div class="page-wrapper full-width rel-div div-center">
-                <?php $attachments = get_attached_media( 'image' );
-                if($attachments){ ?>
                 <div class="row">
                     <div class="col l8 s12 shift-left">
                         <h2 class="uppercase special thicker left-align no-margin"><?php the_subtitle(); ?></h2>
@@ -69,6 +71,7 @@ get_template_part( 'header-nav' ); ?>
                         <div class="slider black" id="content_slider">
                             <ul class="slides">
                                 <?php
+                                    $attachments = get_attached_media( 'image' );
                                     $counter = 0;
                                     foreach($attachments as $attachment) {
                                         if(strtolower($attachment->post_excerpt)=='artist' || strtolower($attachment->post_content)=='inline'){
@@ -86,30 +89,20 @@ get_template_part( 'header-nav' ); ?>
                                 ?>
                             </ul>
                         </div>
-                        <div class="slider-control full-width rel-div">
-                            <div class="row">
-                                <div class="col s6 left-align">
-                                    <a class="black-text btn-large white z-depth-0" id="slidePrev"><i class="material-icons">chevron_left</i></a>
-                                </div>
-                                <div class="col s6 right-align">
-                                    <a class="black-text btn-large white z-depth-0" id="slideNext"><i class="material-icons">chevron_right</i></a>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="col l4 s12 left-align shift-right">
                         <div class="full-width">
                         <?php
+                            $attachments = get_attached_media( 'image' );
                             foreach($attachments as $attachment) {
                                 if(strtolower($attachment->post_excerpt)=='artist'){
-                                    echo '<div class="col m5 l12 s12">';
-                                    echo '<figure class="no-margin"><img src="' .$attachment->guid. '" title="About the artist" alt="' .get_post_meta($attachment->ID , '_wp_attachment_image_alt', true). '" class="full-width"></figure>';
-                                    echo '</div>';
-                                    echo '<div class="col m7 l12 s12 artistdesc">';
+                                    echo '<figure class="no-margin">
+                                            <img src="' .$attachment->guid. '" title="About the artist" alt="' .get_post_meta($attachment->ID , '_wp_attachment_image_alt', true). '" class="full-width">
+                                        </figure>';
                                     echo '<p class="uppercase thicker left-align">About the artist</p>';
                                     echo '<p class="left-align">' .$attachment->post_title. '</p>';
                                     echo '<p class="left-align">' .$attachment->post_content. '</p>';
-                                    echo '</div>';
                                 } else {
                                     continue;
                                 }
@@ -119,7 +112,6 @@ get_template_part( 'header-nav' ); ?>
                         <div class="spacer"></div>
                     </div>
                 </div>
-                <?php } ?>
                 <div class="row">
                     <div class="col s12">
                         <div class="scrollblock">
@@ -131,6 +123,7 @@ get_template_part( 'header-nav' ); ?>
                                 </div>
                             </div>
                         </div>
+						<div class="spacer"></div>
                         <div class="scrollblock">
                             <div class="center mgblock page-wrapper div-center" id="blockWrapper">
                                 <div class="center-align start-quote div-center clearfix"></div>
@@ -138,23 +131,12 @@ get_template_part( 'header-nav' ); ?>
                                 <div class="center-align end-quote div-center clearfix"></div>
                             </div>
                         </div>
+						<div class="spacer"></div>
                         <div class="scrollblock">
-                            <div class="center mgblock page-wrapper div-center" id="shareBlocks">
-                                <div class="content container intro-block div-center">
-                                    <?php
-                                    if ( function_exists( 'sharing_display' ) ) {
-                                        sharing_display( '', true );
-                                    }
-                                    
-                                    if ( class_exists( 'Jetpack_Likes' ) ) {
-                                        $custom_likes = new Jetpack_Likes;
-                                        echo $custom_likes->post_likes( '' );
-                                    }
-                                    ?>
-                                </div>
+                            <div class="mgblock container div-center">
+                                <p>To find out more about the work we do, the artisans we collaborate with and the crafts and cultures we explore,<br>please email Warren Menezes at <a href="mailto:partners@fromaround.co.uk">partners@fromaround.co.uk</a> </p>
                             </div>
                         </div>
-                        <?php get_template_part( 'contact-us-foot' ); ?>
                         <div class="spacer"></div>
                         <div class="scrollblock">
                             <div class="center mgblock page-wrapper div-center">
@@ -181,6 +163,8 @@ get_template_part( 'header-nav' ); ?>
                             </div>
                         </div>
                         <?php } ?>
+                        
+                        
                     </div>
                 </div>
             </div>
